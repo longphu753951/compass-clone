@@ -6,8 +6,9 @@ part of 'itineraryConfig.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ItineraryConfig _$ItineraryConfigFromJson(Map<String, dynamic> json) =>
-    _ItineraryConfig(
+ItineraryConfig _$ItineraryConfigFromJson(Map<String, dynamic> json) =>
+    ItineraryConfig(
+      id: json['id'] as String?,
       continent: json['continent'] as String?,
       startDate:
           json['startDate'] == null
@@ -17,21 +18,21 @@ _ItineraryConfig _$ItineraryConfigFromJson(Map<String, dynamic> json) =>
           json['endDate'] == null
               ? null
               : DateTime.parse(json['endDate'] as String),
-      guests: (json['guests'] as num?)?.toInt(),
+      quests: (json['quests'] as num?)?.toInt(),
       destination: json['destination'] as String?,
       activities:
-          (json['activities'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+          (json['activities'] as List<dynamic>)
+              .map((e) => e as String)
+              .toList(),
     );
 
-Map<String, dynamic> _$ItineraryConfigToJson(_ItineraryConfig instance) =>
+Map<String, dynamic> _$ItineraryConfigToJson(ItineraryConfig instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'continent': instance.continent,
       'startDate': instance.startDate?.toIso8601String(),
       'endDate': instance.endDate?.toIso8601String(),
-      'guests': instance.guests,
+      'quests': instance.quests,
       'destination': instance.destination,
       'activities': instance.activities,
     };

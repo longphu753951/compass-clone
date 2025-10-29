@@ -16,7 +16,7 @@ import '../../../utils/result.dart';
 /// }
 /// ```
 
-abstract class AuthRepository extends ChangeNotifier {
+abstract class AuthRepository {
   Future<bool> get isAutheticated;
   /// Perform login
   Future<Result<void>> login({required String email, required String password});

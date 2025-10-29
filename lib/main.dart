@@ -2,11 +2,12 @@ import 'package:compass_app/routing/route.dart';
 import 'package:compass_app/ui/core/localization/applocalization.dart';
 import 'package:compass_app/ui/core/themes/theme.dart';
 import 'package:flutter/material.dart';
+import 'main_staging.dart' as staging;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  staging.main();
 }
 
 class MyApp extends StatelessWidget {

@@ -6,10 +6,14 @@ part of 'continent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Continent _$ContinentFromJson(Map<String, dynamic> json) => _Continent(
+Continent _$ContinentFromJson(Map<String, dynamic> json) => Continent(
+  id: json['id'] as String?,
   name: json['name'] as String,
   imageUrl: json['imageUrl'] as String,
 );
 
-Map<String, dynamic> _$ContinentToJson(_Continent instance) =>
-    <String, dynamic>{'name': instance.name, 'imageUrl': instance.imageUrl};
+Map<String, dynamic> _$ContinentToJson(Continent instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'imageUrl': instance.imageUrl,
+};

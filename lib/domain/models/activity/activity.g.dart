@@ -6,7 +6,8 @@ part of 'activity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Activity _$ActivityFromJson(Map<String, dynamic> json) => _Activity(
+Activity _$ActivityFromJson(Map<String, dynamic> json) => Activity(
+  id: json['id'] as String?,
   name: json['name'] as String,
   description: json['description'] as String,
   locationName: json['locationName'] as String,
@@ -19,7 +20,8 @@ _Activity _$ActivityFromJson(Map<String, dynamic> json) => _Activity(
   imageUrl: json['imageUrl'] as String,
 );
 
-Map<String, dynamic> _$ActivityToJson(_Activity instance) => <String, dynamic>{
+Map<String, dynamic> _$ActivityToJson(Activity instance) => <String, dynamic>{
+  'id': instance.id,
   'name': instance.name,
   'description': instance.description,
   'locationName': instance.locationName,
