@@ -35,6 +35,13 @@ class User extends Equatable {
     );
   }
 
+  const User._({
+    required this.id,
+    required this.name,
+    required this.image,
+  });
+
+
   static User fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
@@ -42,4 +49,6 @@ class User extends Equatable {
 
   @override
   List<Object?> get props => [id, name, image];
+
+  static const empty = User._(id: '', name: '', image: '');
 }

@@ -1,23 +1,36 @@
+import 'dart:async';
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
+
 import '../../../utils/result.dart';
-import 'auth_repository.dart';
 
-class AuthRepositoryDev extends AuthRepository {
-  @override
-  Future<bool> get isAutheticated async {
+enum AuthenticationStatus { unknown, authenticated, unauthenticated }
+
+class AuthRepositoryDev extends ChangeNotifier {
+  final _controller = StreamController<AuthenticationStatus>();
+
+  Stream<AuthenticationStatus> get isAutheticated async* {
     await Future.delayed(const Duration(seconds: 1));
-    return true;
+    yield AuthenticationStatus.unauthenticated;
+    yield* _controller.stream;
   }
 
-  @override
-  Future<Result<void>> login(
+  Future<void> login(
       {required String email, required String password}) async {
-    await Future.delayed(const Duration(seconds: 1));
-    return const Result.ok(null);
+    await Future.delayed(const Duration(seconds: 1), 
+        () => _controller.add(AuthenticationStatus.authenticated));
+
+  }
+
+  Future<void> logout() async {
+    Future.delayed(const Duration(seconds: 1), () =>
+        _controller.add(AuthenticationStatus.unauthenticated));
   }
 
   @override
-  Future<Result<void>> logout() async {
-    await Future.delayed(const Duration(seconds: 1));
-    return const Result.ok(null);
+  void dispose() {
+    _controller.close();
   }
+
 }
